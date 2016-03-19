@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,13 +28,16 @@ public class FirstActivity extends Activity {
                //finish();
                //销毁一个活动
               // Toast.makeText(FirstActivity.this, "fuckyou",Toast.LENGTH_SHORT).show();
-
-                   //Intent intent =new Intent(FirstActivity.this,SecondActivity.class);
-               Intent intent = new Intent(Intent.ACTION_VIEW);
+          //  String data = "motherfuck";
+               Intent intent =new Intent(FirstActivity.this,SecondActivity.class);
+               startActivityForResult(intent,1);
+            //   intent.putExtra("extra_data",data);
+              // Intent intent = new Intent(Intent.ACTION_VIEW);
 //               intent.addCategory("effectunit.com.blank.MY_CATEGORY");
 //               intent.setData(Uri.parse("http://www.douban.com/"));
-               intent.setData(Uri.parse("tel:13810072224"));
-                   startActivity(intent);
+
+//               intent.setData(Uri.parse("tel:13310072224"));
+//                   startActivity(intent);
 
            }
        });
@@ -63,5 +67,20 @@ public class FirstActivity extends Activity {
         return true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data)
+    {
+        switch (requestCode)
+        {
+            case 1:
+                if (resultCode == RESULT_OK)
+                {
+                    String returnedData = data.getStringExtra("data_return");
+                    Log.d("First",returnedData);
+                }
+                break;
+            default:
+        }
+    }
 }
 
