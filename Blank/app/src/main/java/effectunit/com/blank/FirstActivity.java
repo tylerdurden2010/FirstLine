@@ -1,6 +1,8 @@
 package effectunit.com.blank;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,10 +10,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
-
-
-
-
 /**
  * Created by TagBand on 16/3/5.
  */
@@ -28,7 +26,15 @@ public class FirstActivity extends Activity {
            {
                //finish();
                //销毁一个活动
-               Toast.makeText(FirstActivity.this, "fuckyou",Toast.LENGTH_SHORT).show();
+              // Toast.makeText(FirstActivity.this, "fuckyou",Toast.LENGTH_SHORT).show();
+
+                   //Intent intent =new Intent(FirstActivity.this,SecondActivity.class);
+               Intent intent = new Intent(Intent.ACTION_VIEW);
+//               intent.addCategory("effectunit.com.blank.MY_CATEGORY");
+//               intent.setData(Uri.parse("http://www.douban.com/"));
+               intent.setData(Uri.parse("tel:13810072224"));
+                   startActivity(intent);
+
            }
        });
 
@@ -58,3 +64,4 @@ public class FirstActivity extends Activity {
     }
 
 }
+
